@@ -30,6 +30,38 @@ randomButton.addEventListener('click', function () {
     }
 })
 
+
+    for (index = 0; index < 25; index += 1) {
+        let pixel = document.createElement('li')
+        let quadro = document.getElementById('pixel-board')
+
+        pixel.className = 'pixel'
+        pixel.style.backgroundColor = 'white'
+        pixel.style.border = '1px solid black'
+        pixel.style.display = 'inline-block'
+        pixel.style.width = '50px'
+        pixel.style.height = '50px'
+        pixel.style.textAlign = 'right'
+        
+
+        quadro.appendChild(pixel)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 if(localStorage.length > 0){
 window.onload = function () {
 document.getElementsByClassName('color')[1].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[0],
