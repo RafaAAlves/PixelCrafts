@@ -15,11 +15,25 @@ function paletaCores (cor2, cor3, cor4) {
     }
 } paletaCores ('red', 'green', 'blue')
 
-
+let botao2;
+let botao3;
+let botao4;
 let randomButton = document.getElementById('button-random-color')
 randomButton.addEventListener('click', function () {
     for(index = 1; index < 4; index += 1) {
         let cor = document.getElementsByClassName('color')[index]
         cor.style.backgroundColor = `rgb(${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)})`
+        botao2 = document.getElementsByClassName('color')[1].style.backgroundColor
+        botao3 = document.getElementsByClassName('color')[2].style.backgroundColor
+        botao4 = document.getElementsByClassName('color')[3].style.backgroundColor
+        localStorage.setItem('colorPalette', JSON.stringify([botao2, botao3, botao4]))
     }
 })
+
+if(localStorage.length > 0){
+window.onload = function () {
+document.getElementsByClassName('color')[1].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[0],
+document.getElementsByClassName('color')[2].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[1],
+document.getElementsByClassName('color')[3].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[2]
+}
+}
