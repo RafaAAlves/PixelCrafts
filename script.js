@@ -12,6 +12,9 @@ function paletaCores (cor2, cor3, cor4) {
     cor.style.height = '30px'
     cor.style.display = 'inline-block'
     paleta.appendChild(cor)
+    if (index > 0){
+        cor.id = 'color' + index
+    }
     }
 } paletaCores ('red', 'green', 'blue')
 
@@ -23,9 +26,9 @@ randomButton.addEventListener('click', function () {
     for(index = 1; index < 4; index += 1) {
         let cor = document.getElementsByClassName('color')[index]
         cor.style.backgroundColor = `rgb(${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)})`
-        botao2 = document.getElementsByClassName('color')[1].style.backgroundColor
-        botao3 = document.getElementsByClassName('color')[2].style.backgroundColor
-        botao4 = document.getElementsByClassName('color')[3].style.backgroundColor
+        botao2 = document.getElementById('color1').style.backgroundColor
+        botao3 = document.getElementById('color2').style.backgroundColor
+        botao4 = document.getElementById('color3').style.backgroundColor
         localStorage.setItem('colorPalette', JSON.stringify([botao2, botao3, botao4]))
     }
 })
@@ -47,46 +50,34 @@ randomButton.addEventListener('click', function () {
         quadro.appendChild(pixel)
     }
 
+    let selectedColor = 'black'
     document.getElementsByClassName('color')[0].className = 'color selected'
     let paleta = document.getElementById('color-palette')
     paleta.addEventListener('click', function(event){
-        if (document.getElementsByClassName('selected').length < 1) {
+        if (document.getElementsByClassName('selected').length == 0) {
         event.target.className = 'color selected'
+        selectedColor = document.getElementsByClassName('selected')[0].style.backgroundColor
     }   else if (document.getElementsByClassName('selected')[0].className == event.target.className) {
         event.target.className = 'color'
-    }   else {
+        this.getElementsByClassName('color')[0].className = 'color selected'
+        selectedColor = document.getElementsByClassName('selected')[0].style.backgroundColor
+    }   else if (document.getElementsByClassName('selected')[0].className !== event.target.className){
         document.getElementsByClassName('selected')[0].className = 'color'
         event.target.className = 'color selected'
+        selectedColor = document.getElementsByClassName('selected')[0].style.backgroundColor
     }
 
 })
 
 
-
-
-
-
-
-
-
-
-
-
     for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
-    let selectedColor = document.getElementsByClassName('selected')[0]
     let pixelButton = document.getElementsByClassName('pixel')[index]
     pixelButton.addEventListener('click', function(event){
         event.target.style.backgroundColor = selectedColor
-    }) 
-        if (selectedPixel !== undefined){
-    let selectedColor = selectedPixel.style.backgroundColor 
-    let pixelButton = document.getElementsByClassName('pixel')[index]
-    pixelButton.addEventListener('click', function(event){
-        event.target.style.backgroundColor = selectedColor
-      })
-    }
-  }
+    })} 
 
+
+    
 
 
     
