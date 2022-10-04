@@ -14,3 +14,12 @@ function paletaCores (cor2, cor3, cor4) {
     paleta.appendChild(cor)
     }
 } paletaCores ('red', 'green', 'blue')
+
+
+let randomButton = document.getElementById('button-random-color')
+randomButton.addEventListener('click', function () {
+    for(index = 1; index < 4; index += 1) {
+        let cor = document.getElementsByClassName('color')[index]
+        cor.style.backgroundColor = `rgb(${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)})`
+    }
+})
