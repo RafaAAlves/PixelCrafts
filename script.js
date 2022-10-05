@@ -1,3 +1,34 @@
+// window.onload = function() {
+//     let blank = [];
+//     for (index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
+//     blank.push('white') 
+//     }
+//     localStorage.setItem('pixelBoard', blank)
+//     for (index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
+//     document.getElementsByClassName('pixel')[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index]
+// }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function paletaCores (cor2, cor3, cor4) {
     
     for(index = 0; index < 4; index += 1){
@@ -24,7 +55,7 @@ let botao4;
 let randomButton = document.getElementById('button-random-color')
 randomButton.addEventListener('click', function () {
     for(index = 1; index < 4; index += 1) {
-        let cor = document.getElementsByClassName('color')[index]
+        let cor = document.getElementById('color' + index)
         cor.style.backgroundColor = `rgb(${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)})`
         botao2 = document.getElementById('color1').style.backgroundColor
         botao3 = document.getElementById('color2').style.backgroundColor
@@ -69,19 +100,28 @@ randomButton.addEventListener('click', function () {
 
 })
 
+    let apagador = document.getElementById('clear-board')
+    apagador.addEventListener('click', function(){
+      for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
+        document.getElementsByClassName('pixel')[index].style.backgroundColor = 'white'
+      }  
+    })
 
+    let color = [];
     for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
     let pixelButton = document.getElementsByClassName('pixel')[index]
     pixelButton.addEventListener('click', function(event){
-        event.target.style.backgroundColor = selectedColor
-    })} 
-
+        event.target.style.backgroundColor = selectedColor 
+    //     color.push(event.target.style.backgroundColor)
+    //     localStorage.getItem('pixelBoard', JSON.stringify(color))[0] = 'black'
+    // })} 
+    })}
 
     
 
 
     
-if(localStorage.length > 0){
+if(localStorage.getItem('colorPalette').length > 0){
 window.onload = function () {
 document.getElementsByClassName('color')[1].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[0],
 document.getElementsByClassName('color')[2].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[1],

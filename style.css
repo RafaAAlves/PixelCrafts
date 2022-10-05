@@ -9,7 +9,7 @@
 #button-random-color { 
     margin-left: 40%;
     width: 20%;
-    border: 3px solid purple;
+    border: 3px solid rgb(92, 2, 92);
     background-color:azure;
     padding: 10px
 }
@@ -19,5 +19,16 @@
     height: 210px;
     text-align: center;
     margin-left: 847px;
-    margin-top: 1%;
+    margin-top: 10%;
+}
+
+#clear-board {
+    width: 150px;
+    height: 70px;
+    display: block;
+    position: absolute;
+    margin-left: 46%;
+    margin-top: 5px;
+    border: solid rgb(92, 2, 92) 2px;
+    background-color:azure;
 }
