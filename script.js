@@ -108,6 +108,7 @@ randomButton.addEventListener('click', function () {
                 pixel.style.height = '40px'
                 pixel.style.textAlign = 'center'
                 quadro.appendChild(pixel)
+                localStorage.setItem('boardSize', 5)
             }
 
             for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
@@ -120,11 +121,11 @@ randomButton.addEventListener('click', function () {
                     })} 
         } 
             else if (size.value > 50) {
-                for(index = 0; index < 50; index += 1) {
+                for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
                     quadro.removeChild(document.getElementsByClassName('pixel')[index])
                 }
                 quadro.style.width = `${50 * 42}px`
-                for (index = 0; index < 25; index += 1) {
+                for (index = 0; index < 2500; index += 1) {
                     let pixel = document.createElement('li')
                     let quadro = document.getElementById('pixel-board')
             
@@ -136,7 +137,7 @@ randomButton.addEventListener('click', function () {
                     pixel.style.height = '40px'
                     pixel.style.textAlign = 'center'
                     quadro.appendChild(pixel)
-                    localStorage.setItem('boardSize', size.value)
+                    localStorage.setItem('boardSize', '50')
                 }
     
                 for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
