@@ -16,10 +16,9 @@
 
 #pixel-board {
     width: 210px;
-    height: 210px;
     text-align: center;
     margin-left: 847px;
-    margin-top: 10%;
+    margin-top: 2%;
 }
 
 #clear-board {
@@ -31,4 +30,16 @@
     margin-top: 5px;
     border: solid rgb(92, 2, 92) 2px;
     background-color:azure;
+}
+
+#board-size {
+    display: inline-block;
+    background-color: azure;
+    margin-left: 48%;
+    margin-top: 95px;
+}
+
+#generate-board {
+    display: inline-block;
+    background-color: azure;
 }

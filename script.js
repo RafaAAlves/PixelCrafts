@@ -79,6 +79,117 @@ randomButton.addEventListener('click', function () {
     }  
     })
 
+    let quadro = document.getElementById('pixel-board')
+    let size = document.getElementById('board-size')
+    let sizeButton = document.getElementById('generate-board')
+
+
+    // Mudar tamanho do quadro
+
+    sizeButton.addEventListener('click', function () {
+
+        if (size.value === '') {
+            window.alert('Board inválido!')
+        }   else if (size.value < 5) {
+            for(index = 0; index < document.getElementsByClassName('pixel').length; index += 0) {
+                quadro.removeChild(document.getElementsByClassName('pixel')[index])
+            }
+            quadro.style.width = `${5 * 42}px`
+            for (index = 0; index < 25; index += 1) {
+                let pixel = document.createElement('li')
+                let quadro = document.getElementById('pixel-board')
+        
+                pixel.className = 'pixel'
+                pixel.style.backgroundColor = 'white'
+                pixel.style.border = '1px solid black'
+                pixel.style.display = 'inline-block'
+                pixel.style.width = '40px'
+                pixel.style.height = '40px'
+                pixel.style.textAlign = 'center'
+                quadro.appendChild(pixel)
+            }
+
+            for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
+                let pixelButton = document.getElementsByClassName('pixel')[index]
+                pixelButton.addEventListener('click', function(event){
+                    event.target.style.backgroundColor = selectedColor 
+                    for (let index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
+                        board[index] = document.getElementsByClassName('pixel')[index].style.backgroundColor }
+                        localStorage.setItem('pixelBoard', JSON.stringify(board))
+                    })} 
+        } 
+            else if (size.value > 50) {
+                for(index = 0; index < document.getElementsByClassName('pixel').length; index += 0) {
+                    quadro.removeChild(document.getElementsByClassName('pixel')[index])
+                }
+                quadro.style.width = `${50 * 42}px`
+                for (index = 0; index < 25; index += 1) {
+                    let pixel = document.createElement('li')
+                    let quadro = document.getElementById('pixel-board')
+            
+                    pixel.className = 'pixel'
+                    pixel.style.backgroundColor = 'white'
+                    pixel.style.border = '1px solid black'
+                    pixel.style.display = 'inline-block'
+                    pixel.style.width = '40px'
+                    pixel.style.height = '40px'
+                    pixel.style.textAlign = 'center'
+                    quadro.appendChild(pixel)
+                    localStorage.setItem('boardSize', size.value)
+                }
+    
+                for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
+                    let pixelButton = document.getElementsByClassName('pixel')[index]
+                    pixelButton.addEventListener('click', function(event){
+                        event.target.style.backgroundColor = selectedColor 
+                        for (let index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
+                            board[index] = document.getElementsByClassName('pixel')[index].style.backgroundColor }
+                            localStorage.setItem('pixelBoard', JSON.stringify(board))
+                        })} 
+            }
+        
+        
+            else {
+            for(index = 0; index < document.getElementsByClassName('pixel').length; index += 0) {
+        quadro.removeChild(document.getElementsByClassName('pixel')[index])
+    }
+
+        quadro.style.width = `${size.value * 42}px`
+        for (index = 0; index <= size.value * size.value; index += 1) {
+        let pixel = document.createElement('li')
+        let quadro = document.getElementById('pixel-board')
+
+        pixel.className = 'pixel'
+        pixel.style.backgroundColor = 'white'
+        pixel.style.border = '1px solid black'
+        pixel.style.display = 'inline-block'
+        pixel.style.width = '40px'
+        pixel.style.height = '40px'
+        pixel.style.textAlign = 'center'
+        quadro.appendChild(pixel)
+        localStorage.setItem('boardSize', size.value)
+
+        
+        for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
+            let pixelButton = document.getElementsByClassName('pixel')[index]
+            pixelButton.addEventListener('click', function(event){
+                event.target.style.backgroundColor = selectedColor 
+                for (let index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
+                    board[index] = document.getElementsByClassName('pixel')[index].style.backgroundColor }
+                    localStorage.setItem('pixelBoard', JSON.stringify(board))
+                })}} 
+    }
+})
+
+
+
+
+
+
+
+
+    // Pintar
+
     for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
     let pixelButton = document.getElementsByClassName('pixel')[index]
     pixelButton.addEventListener('click', function(event){
@@ -99,10 +210,44 @@ window.onload = function () {
 document.getElementsByClassName('color')[1].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[0],
 document.getElementsByClassName('color')[2].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[1],
 document.getElementsByClassName('color')[3].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[2]
-}
+}}
+
+
+
+// Seleciona o tamanho do quadro salvo no localStorage
+if(localStorage.getItem('boardSize') !== null) {
+    window.onload = function () {
+        for(index = 0; index < document.getElementsByClassName('pixel').length; index += 0) {
+            quadro.removeChild(document.getElementsByClassName('pixel')[index])
+        }
+        quadro.style.width = `${JSON.parse(localStorage.getItem('boardSize')) * 42}px`
+
+        for (index = 0; index < JSON.parse(localStorage.getItem('boardSize')) * JSON.parse(localStorage.getItem('boardSize')); index += 1) {
+            let pixel = document.createElement('li')
+            let quadro = document.getElementById('pixel-board')
+    
+            pixel.className = 'pixel'
+            pixel.style.backgroundColor = 'white'
+            pixel.style.border = '1px solid black'
+            pixel.style.display = 'inline-block'
+            pixel.style.width = '40px'
+            pixel.style.height = '40px'
+            pixel.style.textAlign = 'center'
+            quadro.appendChild(pixel)
+        }
+    
+    for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
+        let pixelButton = document.getElementsByClassName('pixel')[index]
+        pixelButton.addEventListener('click', function(event){
+            event.target.style.backgroundColor = selectedColor 
+            for (let index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
+                board[index] = document.getElementsByClassName('pixel')[index].style.backgroundColor }
+                localStorage.setItem('pixelBoard', JSON.stringify(board))
+            })} 
+}}
 
 // Seleciona as cores salvas do localStorage no quadro
-} if(localStorage.getItem('pixelBoard') == null) {
+    if(localStorage.getItem('pixelBoard') == null) {
 for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {    
     board[index] = 'white' 
     localStorage.setItem('pixelBoard', JSON.stringify(board))
