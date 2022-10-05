@@ -121,7 +121,7 @@ randomButton.addEventListener('click', function () {
                     })} 
         } 
             else if (size.value > 50) {
-                for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
+                for(index = 0; index < document.getElementsByClassName('pixel').length; index += 0,1) {
                     quadro.removeChild(document.getElementsByClassName('pixel')[index])
                 }
                 quadro.style.width = `${50 * 42}px`
