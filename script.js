@@ -1,32 +1,4 @@
-// window.onload = function() {
-//     let blank = [];
-//     for (index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
-//     blank.push('white') 
-//     }
-//     localStorage.setItem('pixelBoard', blank)
-//     for (index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
-//     document.getElementsByClassName('pixel')[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index]
-// }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let board = [];
 
 
 function paletaCores (cor2, cor3, cor4) {
@@ -76,8 +48,6 @@ randomButton.addEventListener('click', function () {
         pixel.style.width = '40px'
         pixel.style.height = '40px'
         pixel.style.textAlign = 'center'
-        
-
         quadro.appendChild(pixel)
     }
 
@@ -104,26 +74,41 @@ randomButton.addEventListener('click', function () {
     apagador.addEventListener('click', function(){
       for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
         document.getElementsByClassName('pixel')[index].style.backgroundColor = 'white'
-      }  
+        board[index] = 'white'
+        localStorage.setItem('pixelBoard', JSON.stringify(board))
+    }  
     })
 
-    // let color = [];
     for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
     let pixelButton = document.getElementsByClassName('pixel')[index]
     pixelButton.addEventListener('click', function(event){
         event.target.style.backgroundColor = selectedColor 
-    //     color.push(event.target.style.backgroundColor)
-    //     localStorage.getItem('pixelBoard', JSON.stringify(color))[0] = 'black'
-    // })} 
-    })}
+        for (let index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
+            board[index] = document.getElementsByClassName('pixel')[index].style.backgroundColor }
+            localStorage.setItem('pixelBoard', JSON.stringify(board))
+        })} 
+    
 
     
 
 
-    
-if(localStorage.length > 0){
+
+// Seleciona as cores salvas do localStorage na paleta
+if(localStorage.getItem('colorPalette') !== null){
 window.onload = function () {
 document.getElementsByClassName('color')[1].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[0],
 document.getElementsByClassName('color')[2].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[1],
 document.getElementsByClassName('color')[3].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[2]
-}}
+}
+
+// Seleciona as cores salvas do localStorage no quadro
+} if(localStorage.getItem('pixelBoard') == null) {
+for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {    
+    board[index] = 'white' 
+    localStorage.setItem('pixelBoard', JSON.stringify(board))
+    document.getElementsByClassName('pixel')[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index]
+}} else {
+    for (index = 0; index < document.getElementsByClassName('pixel').length; index += 1) {
+        document.getElementsByClassName('pixel')[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index]
+    }
+}
