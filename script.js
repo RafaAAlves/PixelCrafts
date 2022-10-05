@@ -8,27 +8,6 @@
 //     document.getElementsByClassName('pixel')[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index]
 // }}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function paletaCores (cor2, cor3, cor4) {
     
     for(index = 0; index < 4; index += 1){
