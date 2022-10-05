@@ -8,6 +8,27 @@
 //     document.getElementsByClassName('pixel')[index].style.backgroundColor = JSON.parse(localStorage.getItem('pixelBoard'))[index]
 // }}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function paletaCores (cor2, cor3, cor4) {
     
     for(index = 0; index < 4; index += 1){
@@ -86,7 +107,7 @@ randomButton.addEventListener('click', function () {
       }  
     })
 
-    let color = [];
+    // let color = [];
     for(index = 0; index < document.getElementsByClassName('pixel').length; index += 1){
     let pixelButton = document.getElementsByClassName('pixel')[index]
     pixelButton.addEventListener('click', function(event){
@@ -100,7 +121,7 @@ randomButton.addEventListener('click', function () {
 
 
     
-if(localStorage.getItem('colorPalette').length > 0){
+if(localStorage.length > 0){
 window.onload = function () {
 document.getElementsByClassName('color')[1].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[0],
 document.getElementsByClassName('color')[2].style.backgroundColor = JSON.parse(localStorage.getItem('colorPalette'))[1],
