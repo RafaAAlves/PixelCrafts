@@ -92,7 +92,7 @@ randomButton.addEventListener('click', function () {
             window.alert('Board inválido!')
         }   
             else if (size.value < 5) {
-            for(index = 0; index < document.getElementsByClassName('pixel').length; index += 0,1) {
+            for(index = 0; index < document.getElementsByClassName('pixel').length; index += 0.1) {
                 quadro.removeChild(document.getElementsByClassName('pixel')[index])
             }
             quadro.style.width = `${5 * 42}px`
